@@ -5,6 +5,18 @@
     <title>Parrot Home</title>
 </head>
 <body>
-<h1>Hello!</h1>
+<h1>Hello!</h1><br>
+
+<div>
+    <form th:each="user : ${users}">
+
+        <div th:if="${user.username != currentUser}">
+            <div th:text="${user.username}"></div>
+
+            <a>Open chat</a>
+        </div>
+    </form>
+</div>
+
 </body>
 </html>
