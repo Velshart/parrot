@@ -5,7 +5,9 @@
     <title>Parrot Home</title>
 </head>
 <body>
-<h1>Hello!</h1><br>
+<div>
+    <h1>Hello, <span th:text="${currentUser}">Unknown</span></h1><br>
+</div>
 
 <div>
     <form th:each="user : ${users}">
