@@ -14,9 +14,18 @@ import java.util.List;
 @Table(name = "chats")
 public class Chat {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "chats", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne
+    @JoinColumn(name = "first_participant_id", nullable = false)
+    private User firstParticipant;
+
+    @ManyToOne
+    @JoinColumn(name = "second_participant_id", nullable = false)
+    private User secondParticipant;
+
+    @OneToMany(mappedBy = "chat", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Message> messages;
 
 }

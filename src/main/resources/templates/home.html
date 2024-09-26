@@ -15,10 +15,14 @@
         <div th:if="${user.username != currentUser}">
             <div th:text="${user.username}"></div>
 
-            <a>Open chat</a>
+            <a th:href="@{/chat/get/{userId}(userId=${user.id})}">Open chat</a>
         </div>
     </form>
-</div>
+</div><br>
+
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Log out</button>
+</form>
 
 </body>
 </html>

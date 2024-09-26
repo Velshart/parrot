@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Parrot Chat</title>
 </head>
 <body>
+
+<div>
+    <ul>
+        <li th:each="message : ${messages}">
+            <strong th:text="${message.sender.username}">Username</strong>:
+            <span th:text="${message.content}">Message content</span>
+            <em th:text="${message.timestamp}">Timestamp</em>
+        </li>
+    </ul>
+</div><br>
+
+<form th:action="@{'/chat/send/' + ${chatId}}" method="post">
+    <input type="text" name="content" placeholder="Send message...">
+    <button type="submit" value="Send"></button>
+</form><br>
 
 </body>
 </html>

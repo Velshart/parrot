@@ -44,21 +44,24 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDTO> findAllUsers() {
-        return USER_REPOSITORY.findAll().stream()
-                .map(this::mapToUserDto)
-                .toList();
+        return USER_REPOSITORY.findAll().stream().map(this::mapToUserDto).toList();
     }
 
     private UserDTO mapToUserDto(User user) {
         UserDTO userDto = new UserDTO();
         String[] str = user.getUsername().split(" ");
         userDto.setUsername(str[0]);
+        userDto.setId(user.getId());
         return userDto;
     }
 
     private Role checkIfRoleExistsOrCreate() {
-        Role role = new Role();
-        role.setName("USER");
-        return ROLE_REPOSITORY.save(role);
+        Role roleToCheck = ROLE_REPOSITORY.findByName("USER");
+        if(roleToCheck == null) {
+            Role role = new Role();
+            role.setName("USER");
+            return ROLE_REPOSITORY.save(role);
+        }
+        return roleToCheck;
     }
 }

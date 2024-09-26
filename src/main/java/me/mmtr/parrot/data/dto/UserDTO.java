@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserDTO {
 
+    private Long id;
+
     @NotEmpty(message = "Username cannot be empty.")
     private String username;
 

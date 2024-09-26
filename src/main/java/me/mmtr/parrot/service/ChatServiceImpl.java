@@ -2,6 +2,7 @@ package me.mmtr.parrot.service;
 
 import jakarta.transaction.Transactional;
 import me.mmtr.parrot.data.Chat;
+import me.mmtr.parrot.data.User;
 import me.mmtr.parrot.data.dao.interfaces.IChatDAO;
 import me.mmtr.parrot.service.interfaces.ChatService;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,14 @@ public class ChatServiceImpl implements ChatService {
     @Transactional
     public Optional<Chat> getById(Long id) {
         return CHAT_DAO.getById(id);
+    }
+
+    @Override
+    public Optional<Chat> getByParticipants(User first, User second) {
+       return this.CHAT_DAO.getAll().stream().filter(chat ->
+               chat.getFirstParticipant() == first && chat.getSecondParticipant() == second ||
+                       chat.getFirstParticipant() == second && chat.getSecondParticipant() == first)
+               .findFirst();
     }
 
     @Override
