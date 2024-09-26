@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -29,5 +30,5 @@ public class Message {
     private String content;
 
     @Column(nullable = false)
-    private LocalDateTime timestamp;
+    private LocalDate timestamp;
 }

@@ -11,7 +11,7 @@
         <li th:each="message : ${messages}">
             <strong th:text="${message.sender.username}">Username</strong>:
             <span th:text="${message.content}">Message content</span>
-            <em th:text="${message.timestamp}">Timestamp</em>
+            <em th:text="' | ' + ${message.timestamp}">Timestamp</em>
         </li>
     </ul>
 </div><br>

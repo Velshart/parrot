@@ -11,7 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 @RequestMapping(path = "/chat")
@@ -59,7 +62,9 @@ public class ChatController {
         Message messageToSend = new Message();
         messageToSend.setChat(chat);
         messageToSend.setContent(content);
-        messageToSend.setTimestamp(LocalDateTime.now());
+
+        messageToSend.setTimestamp(LocalDate.now());
+
         messageToSend.setSender(chat.getFirstParticipant());
 
         MESSAGE_SERVICE.saveMessage(messageToSend);
