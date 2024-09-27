@@ -81,7 +81,6 @@ public class ChatControllerTests {
             http.authorizeHttpRequests(authorizeRequests ->
                             authorizeRequests
                                     .requestMatchers("/chat/**").permitAll()
-                                    .requestMatchers("/**").permitAll()
                     )
                     .csrf(AbstractHttpConfigurer::disable);
 
