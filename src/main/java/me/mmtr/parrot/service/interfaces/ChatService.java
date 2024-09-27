@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ChatService {
-    Chat saveOrUpdate(Chat chat);
+    void saveOrUpdate(Chat chat);
     Optional<Chat> getById(Long id);
     Optional<Chat> getByParticipants(User first, User second);
     List<Chat> getAll();
