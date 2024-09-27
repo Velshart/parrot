@@ -2,9 +2,6 @@ package me.mmtr.parrot.controller;
 
 import me.mmtr.parrot.service.interfaces.ChatService;
 import me.mmtr.parrot.service.interfaces.UserService;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

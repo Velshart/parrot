@@ -42,12 +42,13 @@ public class ChatDAO implements IChatDAO {
     }
 
     @Override
-    public void saveOrUpdate(Chat chat) {
+    public Chat saveOrUpdate(Chat chat) {
         if(getById(chat.getId()).isEmpty()) {
             entityManager.persist(chat);
         }else {
             entityManager.merge(chat);
         }
+        return chat;
     }
 
     @Override

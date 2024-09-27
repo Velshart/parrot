@@ -45,7 +45,7 @@ public class ChatController {
             chat.setFirstParticipant(first);
             chat.setSecondParticipant(second);
 
-            CHAT_SERVICE.saveOrUpdate(chat);
+            chat = CHAT_SERVICE.saveOrUpdate(chat);
         }
         return "redirect:/chat/" + chat.getId();
     }
