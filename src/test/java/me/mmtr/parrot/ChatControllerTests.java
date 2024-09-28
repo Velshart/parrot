@@ -104,7 +104,7 @@ public class ChatControllerTests {
 
         Chat capturedChat = chatCaptor.getValue();
         Assertions.assertEquals(chat, capturedChat);
-        Assertions.assertEquals(1L, chat.getId());
+        Assertions.assertEquals(1L, capturedChat.getId());
     }
 
     @Test
