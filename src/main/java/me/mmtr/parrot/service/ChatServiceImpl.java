@@ -21,8 +21,10 @@ public class ChatServiceImpl implements ChatService {
 
     @Override
     @Transactional
-    public void saveOrUpdate(Chat chat) {
+    public Chat saveOrUpdate(Chat chat) {
          CHAT_DAO.saveOrUpdate(chat);
+
+         return chat;
     }
 
     @Override

@@ -68,22 +68,4 @@ public class ChatController {
 
         return "redirect:/chat/" + id;
     }
-
-    @PostMapping("/add")
-    public String addChat(@ModelAttribute Chat chat) {
-        CHAT_SERVICE.saveOrUpdate(chat);
-        return "redirect:/home";
-    }
-
-    @PostMapping("/update/{id}")
-    public String updateChat(@ModelAttribute Chat chat, @PathVariable Long id) {
-        CHAT_SERVICE.saveOrUpdate(chat);
-        return "redirect:/home";
-    }
-
-    @PostMapping("/delete/{id}")
-    public String deleteChat(@ModelAttribute Chat chat, @PathVariable Long id) {
-        CHAT_SERVICE.delete(id);
-        return "redirect:/home";
-    }
 }

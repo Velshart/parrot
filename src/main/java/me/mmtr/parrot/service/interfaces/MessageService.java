@@ -5,6 +5,6 @@ import me.mmtr.parrot.data.Message;
 import java.util.List;
 
 public interface MessageService {
-    void saveMessage(Message message);
+    Message saveMessage(Message message);
     List<Message> getMessagesByChatId(Long id);
 }
