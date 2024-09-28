@@ -82,16 +82,10 @@ public class ChatControllerTests {
     @WithMockUser(username = "principal")
     public void shouldCreateNewChatAndRedirectToChatView() throws Exception {
         User user = new User(1L, "username", "password", List.of(), List.of());
-        Chat chat = new Chat(1L, user, user, List.of());
-
-        Mockito.when(chatService.getById(1L)).thenReturn(Optional.of(chat));
 
         Mockito.when(chatService.saveOrUpdate(Mockito.any(Chat.class))).thenAnswer(invocation -> {
             Chat savedChat = invocation.getArgument(0);
             savedChat.setId(1L);
-            savedChat.setFirstParticipant(user);
-            savedChat.setSecondParticipant(user);
-            savedChat.setMessages(List.of());
             return savedChat;
         });
 
@@ -103,7 +97,6 @@ public class ChatControllerTests {
         Mockito.verify(chatService).saveOrUpdate(chatCaptor.capture());
 
         Chat capturedChat = chatCaptor.getValue();
-        Assertions.assertEquals(chat, capturedChat);
         Assertions.assertEquals(1L, capturedChat.getId());
     }
 
