@@ -22,6 +22,10 @@
 
 <form th:action="@{/logout}" method="post">
     <button type="submit">Log out</button>
+</form><br>
+
+<form method="get" th:action="@{/account/delete-confirm}">
+    <input type="submit" value="Delete account">
 </form>
 
 </body>

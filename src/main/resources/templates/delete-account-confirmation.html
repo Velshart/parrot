@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Are you sure?</title>
+</head>
+
+<h1>Are you sure you want to delete your account?</h1>
+
+<body>
+<form method="post" th:action="@{/account/delete}">
+    <input type="hidden" th:name="id" th:value="${userId}">
+    <input type="submit" value="Yes, delete my account" class="btn-delete">
+</form><br>
+
+<form th:action="@{/home}" method="get">
+    <button type="submit">Cancel</button>
+</form>
+</body>
+</html>

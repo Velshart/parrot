@@ -81,8 +81,6 @@ public class ChatControllerTests {
     @Test
     @WithMockUser(username = "principal")
     public void shouldCreateNewChatAndRedirectToChatView() throws Exception {
-        User user = new User(1L, "username", "password", List.of(), List.of());
-
         Mockito.when(chatService.saveOrUpdate(Mockito.any(Chat.class))).thenAnswer(invocation -> {
             Chat savedChat = invocation.getArgument(0);
             savedChat.setId(1L);

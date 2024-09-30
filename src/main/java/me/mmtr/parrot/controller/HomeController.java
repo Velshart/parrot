@@ -22,6 +22,7 @@ public class HomeController {
     public String home(Model model, Principal principal) {
         model.addAttribute("users", USER_SERVICE.findAllUsers());
         model.addAttribute("currentUser", principal.getName());
+        model.addAttribute("currentUserId", USER_SERVICE.findUserByUsername(principal.getName()).getId());
         model.addAttribute("chats", CHAT_SERVICE.getAll());
 
         return "home";
