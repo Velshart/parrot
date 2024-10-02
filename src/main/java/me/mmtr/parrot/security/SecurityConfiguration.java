@@ -20,6 +20,7 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests((authorizeRequests) -> {
                     authorizeRequests.requestMatchers("/register").permitAll()
                             .requestMatchers("/login").permitAll()
+                            .requestMatchers("/css/**").permitAll()
                             .anyRequest().authenticated();
 
                 }).formLogin(formLogin -> {
