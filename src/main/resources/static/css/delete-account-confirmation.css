@@ -1,0 +1,51 @@
+body {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Calibri, serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+input[type="hidden"] {
+    display: none;
+}
+
+input[type="submit"], button {
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #d32f2f; /* Ciemniejszy czerwony kolor po najechaniu */
+}
+
+button {
+    background-color: #4CAF50; /* Zielony kolor tła dla przycisku "Cancel" */
+}
+
+button:hover {
+    background-color: #45a049; /* Ciemniejszy zielony kolor po najechaniu */
+}
