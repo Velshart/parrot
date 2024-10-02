@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Parrot Chat</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/chat.css}" href="../static/css/chat.css"/>
 </head>
 <body>
 
@@ -18,7 +19,7 @@
 
 <form th:action="@{'/chat/send/' + ${chatId}}" method="post">
     <input type="text" name="content" placeholder="Send message...">
-    <button type="submit" value="Send"></button>
+    <button type="submit">Send</button>
 </form><br>
 
 <form th:action="@{/home}" method="get">
