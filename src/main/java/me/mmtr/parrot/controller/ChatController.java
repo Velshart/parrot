@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.Comparator;
+import java.util.List;
 
 @Controller
 @RequestMapping(path = "/chat")
@@ -29,6 +31,10 @@ public class ChatController {
     @GetMapping("/{id}")
     public String showChat(@PathVariable Long id, Model model) {
         model.addAttribute("chatId", id);
+
+        List<Message> messages = MESSAGE_SERVICE.getMessagesByChatId(id);
+        messages.sort(Comparator.comparing(Message::getTimestamp));
+
         model.addAttribute("messages", MESSAGE_SERVICE.getMessagesByChatId(id));
         return "chat";
     }
