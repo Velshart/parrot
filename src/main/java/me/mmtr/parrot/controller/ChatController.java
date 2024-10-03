@@ -58,7 +58,7 @@ public class ChatController {
 
     @PostMapping("/send/{id}")
     public String sendMessage(@PathVariable Long id,
-                              @RequestParam String content) {
+                              @RequestParam String content, Principal principal) {
 
         Chat chat = CHAT_SERVICE.getById(id).orElseThrow();
 
@@ -68,10 +68,16 @@ public class ChatController {
 
         messageToSend.setTimestamp(LocalDate.now());
 
-        messageToSend.setSender(chat.getFirstParticipant());
+        messageToSend.setSender(getPrincipalAsUser(principal, chat));
 
         MESSAGE_SERVICE.saveMessage(messageToSend);
 
         return "redirect:/chat/" + id;
+    }
+
+    private User getPrincipalAsUser(Principal principal, Chat chat) {
+        List<User> chatParticipants = chat.getParticipants();
+
+        return chatParticipants.stream().filter(user -> user.getUsername().equals(principal.getName())).findFirst().orElse(null);
     }
 }

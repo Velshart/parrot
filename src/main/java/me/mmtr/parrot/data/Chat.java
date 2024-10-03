@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -28,4 +29,11 @@ public class Chat {
     @OneToMany(mappedBy = "chat", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Message> messages;
 
+    public List<User> getParticipants() {
+        List<User> participants = new ArrayList<>();
+        participants.add(firstParticipant);
+        participants.add(secondParticipant);
+
+        return participants;
+    }
 }
